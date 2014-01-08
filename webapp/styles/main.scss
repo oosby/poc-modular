@@ -1,0 +1,39 @@
+@import "compass/css3";
+@import "compass/reset";
+$default-border-radius: 5px;
+$default-transition-property: transform;
+$default-transition-duration : 500ms;
+$default-transition-timing: ease-in;
+
+@import "nav";
+@import "accordion";
+@import "carousel";
+@import "copy";
+
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Georgia', serif;
+  background: #999;
+  padding: 2em;
+
+  h1 {
+  	font-size: 3em;
+    color: #555;
+    text-align: center;
+  }
+
+  h2 {
+  	font-size: 1.8em;
+  	color: #555;
+  }
+  h3 {
+  	font-size: 1.4em;
+  }
+}
+
+.animate {
+  @include transition();
+  @include transition(height, 500ms);
+}

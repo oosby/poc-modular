@@ -1,0 +1,38 @@
+.nav {
+  margin-bottom: 2em;
+  overflow: hidden;
+
+  li {
+    float: left;
+    color: #666;
+    text-transform: uppercase;
+  }
+}
+
+.hd .nav {
+  border-bottom: 1px #666 dashed;
+
+  li {
+    font-size: 2em;
+  }
+
+  li + li {
+    float: right;
+  }
+}
+
+.ft .nav {
+  border-top: 1px #666 dashed;
+  padding-top: 3px;
+
+  li {
+    font-size: 1.3em;
+  }
+
+  li:before {
+    content: '::'
+  }
+  li:first-child:before {
+    content: '';
+  }
+}

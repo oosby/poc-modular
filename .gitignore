@@ -1,0 +1,21 @@
+#always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.vi
+*~
+*.css
+
+#other
+.DS_Store
+._*
+.sass-cache
+Thumbs.db
+node_modules
+node
+webapp-built
+requirejs-example-multipage

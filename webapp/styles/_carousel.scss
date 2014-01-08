@@ -1,0 +1,77 @@
+.with-carousel-ext {
+    overflow: hidden;
+    margin: 1em auto;
+    position: relative;
+
+    .carousel-container {
+        overflow: hidden;
+          width: 100%;
+          position: relative;
+
+        .carousel-item {
+            display: none;
+            position: relative;
+            @include transition-property(left);
+            @include transition-duration(.6s);
+            @include transition-timing-function(ease-in);
+
+            img, 
+            > a > img {
+              display: block;
+              line-height: 1;
+            }
+            &.active,
+            &.next,
+            &.prev { display: block; }
+
+            &.active { left: 0; }
+
+            &.next,
+            &.prev {
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+            &.next { left: 100%; }
+
+            &.prev { left: -100%; }
+
+            &.next.left,
+            &.prev.right { left: 0; }
+
+            &.active.left { left: -100%; }
+
+            &.active.right { left: 100%; }
+        }
+    }
+    .carousel-pagination {
+        color: #666;
+        font-size: 1.4em;
+        text-align: center;
+        padding-bottom: 1em; 
+        li {
+            display: inline-block;
+            padding: 0 .5em;
+            &.active { color: #ccc; } 
+        }
+    }
+    .carousel-nav > .carousel-control {
+        position: absolute;
+        top: 50%;
+        outline: none;
+        color: rgba(255,255,255,.8);
+        z-index: 5;
+        display: block;
+        text-align: center;
+
+        &.prev {
+            left: 2%;
+        }
+
+        &.next {
+            right: 2%;
+        }
+    }
+    i.carousel-control { font-size: 4em; }
+}
