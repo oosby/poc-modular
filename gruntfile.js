@@ -24,23 +24,16 @@ module.exports = function(grunt) {
 				options: {
 					appDir: 'webapp/',
 					baseUrl: 'js',
-					mainConfigFile: 'webapp/js/common.js',
+					mainConfigFile: 'webapp/js/main.js',
 					dir: 'webapp-built',
 					optimize: 'none',
 					modules: [
 				        {
-				            name: 'common',
+				            name: 'main',
 				        },
-				        {
-				            //module names are relative to baseUrl/paths config
-				            name: 'home',
-				            exclude: ['common']
-				        },
-
 				        {
 				            //module names are relative to baseUrl
 				            name: 'video',
-				            exclude: ['common']
 				        }
 				    ]
 				}
