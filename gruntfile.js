@@ -20,26 +20,26 @@ module.exports = function(grunt) {
 			}
 		},
 		requirejs: {
-			compile: {
-				options: {
-					appDir: 'webapp/',
-					baseUrl: 'js',
-					mainConfigFile: 'webapp/js/main.js',
-					dir: 'webapp-built',
-					optimize: 'none',
-					modules: [
-				        {
-				            name: 'main',
-				        },
-				        {
-				            //module names are relative to baseUrl
-				            name: 'video',
-				        }
-				    ]
-				}
-			}
+			dist: {
+		        options: {
+		            baseUrl: './webapp/js',
+				    name: 'vendor/almond',
+				    include: ['main'],
+				    paths: {
+				    	'utilities': 'globals/utils',
+				    	'jquery': 'globals/jqwrapper',
+				    	'modernizr': 'vendor/modernizr.min'
+				    },
+				    insertRequire: ['main'],
+				    out: './webapp-built/js/main-built.js',
+				    wrap: true,
+				    optimize: 'none'
+		        }
+		    }
 		}
 	});
+
+	grunt.registerTask('build', ['requirejs:dist']);
 
 	// load plugins and tasks
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
