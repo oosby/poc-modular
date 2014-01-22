@@ -75,3 +75,34 @@
     }
     i.carousel-control { font-size: 4em; }
 }
+
+[data-module="carousel"] {
+    width: 100%;
+    overflow: auto;
+    ul {
+        width: 1415px;
+        overflow: hidden;
+        > li {
+            float: left;
+            margin-left: 5px;
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+
+    figure {
+        position: relative;
+        padding: 0;
+
+        figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0,.6);
+            padding: .5em;
+            color: #ccc;
+            width: 100%;
+        }
+    }
+}

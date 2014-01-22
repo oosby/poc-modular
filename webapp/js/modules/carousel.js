@@ -1,10 +1,10 @@
-define(['utilities'], function() {
+define(['utilities'], function(utils) {
 	/**
         ##Vars
         els: nodelist of modules to be passed into instances
         Mod: inherit from global pMod
     */
-    var els = document.querySelectorAll('[data-module="modules/carousel"]')
+    var els = document.querySelectorAll('[data-module="carousel"]')
         , Mod = Object.create(utils.pMod);
 
     /**
@@ -16,7 +16,7 @@ define(['utilities'], function() {
             @param {object} $el takes a jquery element
         */
         blankMethod: function blankMethod (options) {
-        	console.log('%cblankMethod %o|d|s', 'color:hotpink', this, options);
+        	console.log('%cblankMethod %o', 'color:hotpink', this, options);
         },	
         /**
             ###start
@@ -43,5 +43,5 @@ define(['utilities'], function() {
         @param {string} [optional] name of callback method to fire 
         for each "instance"
     */
-    Mod.init(Mod.Carousel, els, 'start')
+    Mod.init(Mod.Carousel, els, 'start', {key : 'value'})
 })

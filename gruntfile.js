@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 			dist: {
 				files: {'./webapp/styles/main.css': './webapp/styles/main.scss'},
 				options: {
-					// sourcemap: true,
+					sourcemap: true,
 					compass: true
 				}
 			}

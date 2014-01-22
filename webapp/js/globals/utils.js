@@ -1,5 +1,5 @@
 define([], function () {
-	var _modularNS = {};
+	var _modularNS = window._modularNS = {};
 
 	_modularNS.utils = {
 		siteModules : {},
