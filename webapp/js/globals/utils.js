@@ -1,134 +1,108 @@
 define([], function () {
-	window.utils = {};
+	var _modularNS = {};
 
-	utils.name = "utils";
+	_modularNS.utils = {
+		siteModules : {},
 
-	utils.pageModules = {};
+		pMod : {
+	        init: function (Obj, els, cb, options) {
+	            options = options || {};
 
-	utils.getPageModules = function getPageModules (context) {
-        // find data modules
-        var context = context || document,
-        modules = context.querySelectorAll('[data-module]'),
-        i       = modules.length,
-        moduleName;
+	            if (els) {
+	                [].forEach.call(els, function(el, idx) {
+	                    var tmp = Object.create(Obj);
+	                    options.el = el;
+	                    if (cb) {
+	                        tmp[cb](options);
+	                    }
+	                    
+	                }, this);
+	           }
+	            
+	            // add this module to siteModules{}
+	            _modularNS.utils.siteModules[Obj.name] = {'object': Obj, 'startFn' : cb || null};
+	        }
+	    },
 
-        function addToPageModules(modName, elem) {
-            if(utils.pageModules[modName]) {
-                utils.pageModules[modName].push(elem);
-            } else {
-                utils.pageModules[modName] = [elem];
-            }
-        }
+	    createModule : function createModule(moduleName, options) {
+	        var tmp = Object.create(this.siteModules[moduleName].object)
+	            , cb = this.siteModules[moduleName].startFn
+	            , options = options || {};
 
-        while (i--) {
-            moduleName = modules[i].getAttribute('data-module');
+	        if (cb) {
+	           tmp[cb](options);
+	        }
+	        return tmp;
+	    },
 
-            if (/,/.test(moduleName)) {
-                var arr = moduleName.replace(' ', '').split(',');
-                arr.forEach(function(str) {
-                    addToPageModules(str, modules[i]);
-                }, this)
-            } else {
-                addToPageModules(moduleName, modules[i]);
-            }            
-        }
-    };
-
-	utils.elFinder = function elFinder (args) {
-		var el = args.el,
-			elNode = args.elNode.toLowerCase(),
-			elParent,
-			elSearch = (function elSearch(el) {
-				if (el.nodeName !== 'BODY') {
-					if (el.nodeName.toLowerCase() === elNode) {
-						elParent = el;
-					} else {
-						elSearch(el.parentElement);
+		elFinder : function elFinder (args) {
+			var el = args.el,
+				elNode = args.elNode.toLowerCase(),
+				elParent,
+				elSearch = (function elSearch(el) {
+					if (el.nodeName !== 'BODY') {
+						if (el.nodeName.toLowerCase() === elNode) {
+							elParent = el;
+						} else {
+							elSearch(el.parentElement);
+						}
 					}
+				})(el);
+				return elParent
+		},
+
+		prefixFinder : function prefixFinder () {
+			var agent = window.navigator.userAgent,
+				arrayBrowser = ['webkit', 'firefox', 'opera'],
+				len = arrayBrowser.length,
+				reg,
+				prefix;
+
+			while(len--) {
+				reg = new RegExp(arrayBrowser[len], 'i');
+				if (reg.test(agent)) {
+					prefix = arrayBrowser[len]
 				}
-			})(el);
-			return elParent
-	};
-
-	utils.indexFinder = function indexFinder (args) {
-		var len = args.array.length;
-		while (len--) {
-			if (args.array[len] === args.el) {
-				return len;
 			}
-		}
-	};
+			
+			switch(prefix) {
+				case 'webkit' : 
+					prefix = 'webkit';
+				break;
 
-	utils.prefixFinder = function prefixFinder () {
-		var agent = window.navigator.userAgent,
-			arrayBrowser = ['webkit', 'firefox', 'opera'],
-			len = arrayBrowser.length,
-			reg,
-			prefix;
+				case 'firefox' :
+					prefix = 'Moz';
+				break;
 
-		while(len--) {
-			reg = new RegExp(arrayBrowser[len], 'i');
-			if (reg.test(agent)) {
-				prefix = arrayBrowser[len]
+				case 'opera' :
+					prefix = 'o';
+				break;
 			}
-		}
-		
-		switch(prefix) {
-			case 'webkit' : 
-				prefix = 'webkit';
-			break;
+			window.prefix = prefix;
+		},
 
-			case 'firefox' :
-				prefix = 'Moz';
-			break;
+		transition : function transition() {
+	        var transitionEnd = (function() {
+	            var el = document.createElement('bootstrap')
+	                , transEndEventNames = {
+	                    'WebkitTransition': 'webkitTransitionEnd', 'MozTransition': 'transitionend', 'OTransition': 'oTransitionEnd otransitionend', 'transition': 'transitionend'
+	                }
+	                , name
+	                , ret;
 
-			case 'opera' :
-				prefix = 'o';
-			break;
-		}
-		window.prefix = prefix;
+	            for (name in transEndEventNames) {
+	                if (el.style[name] !== undefined) {
+	                    ret = transEndEventNames[name];
+	                }
+	            }
+
+	            return ret;
+
+	        }())
+
+	        utils.transitionend = transitionEnd;
+	    }
 	};
 
-	utils.addClass = function addClass (el, newClass) {
-		var curClasses = el.getAttribute('class');
-		if (curClasses.length > 0) {
-			curClasses += (' ' + newClass);
-		}
-		el.setAttribute('class', curClasses)
-		return el;
-	};
-
-	utils.hasClass = function hasClass (el, className) {
-		var curClasses = el.getAttribute('class'),
-			reg = new RegExp(className, 'i');
-		if (curClasses === null) { return false; }
-		if (reg.test(curClasses)) {
-			return true
-		}
-	}
-
-	utils.transition = function transition() {
-        var transitionEnd = (function() {
-            var el = document.createElement('bootstrap')
-                , transEndEventNames = {
-                    'WebkitTransition': 'webkitTransitionEnd', 'MozTransition': 'transitionend', 'OTransition': 'oTransitionEnd otransitionend', 'transition': 'transitionend'
-                }
-                , name
-                , ret;
-
-            for (name in transEndEventNames) {
-                if (el.style[name] !== undefined) {
-                    ret = transEndEventNames[name];
-                }
-            }
-
-            return ret;
-
-        }())
-
-        utils.transitionend = transitionEnd;
-
-    }
-
-	return utils;
+	return _modularNS.utils;
 })
