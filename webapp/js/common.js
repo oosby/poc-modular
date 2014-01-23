@@ -1,2 +1,2 @@
-define(['modules/carousel', 'modules/accordion', 'modules/orderedList'], function () {
+define(['modules/tile', 'modules/accordion', 'modules/orderedList'], function () {
 });

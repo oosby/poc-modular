@@ -1,0 +1,94 @@
+section {
+	> ul {
+		overflow: hidden;
+
+		> li {
+			float: left;
+			width: 20%;
+			display: block;
+			padding: .5em;
+			text-align: center;
+		}
+	}
+
+	.tile {
+		background-repeat: no-repeat;
+		position: relative;
+		-webkit-perspective: 800;
+
+		hgroup {
+			padding: .5em;
+			font-family: 'ostrich-regular' sans-serif;
+			position: relative;
+			z-index: 1;
+			cursor: pointer;
+			background: rgba(255, 255, 255, 0.6);
+
+			h4 {
+				font-size: 2.5em;
+			}
+		}
+
+		&.Snow .face {
+			background-image: url(../images/snow.jpg);
+		}
+
+		&.Rain .face {
+			background-image: url(../images/rain.jpg);
+		}
+
+		&.Clear .face {
+			background-image: url(../images/clear.jpg);
+		}
+
+		&.Clouds .face {
+			background-image: url(../images/cloud.jpg);
+		}
+
+		.card {
+			width: 100%;
+			height: 100%;
+			-webkit-transform-style: preserve-3d;
+			-webkit-transition: 0.5s;
+			&.flipped {
+			  -webkit-transform: rotatex(-180deg);
+			}
+
+			.face {
+				width: 100%;
+				height: 100%;
+				-webkit-backface-visibility: hidden ;
+				z-index: 2;
+				background-size: cover;
+			}
+		}
+
+		.temps {
+			padding: 1em .5em 4em;
+			color: #fff;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			-webkit-transform: rotatex(-180deg);
+		    cursor: pointer;
+
+			li {
+				padding: 0.15em 0;
+				font-family: 'ostrich-regular';
+				font-size: 1.8em;
+			}
+		}
+
+		.month {
+			display: block;
+			font-size: 2.2em;
+			font-family: 'ostrich-black' sans-serif;
+		}
+
+		.year {
+			display: block;
+			font-size: 4.5em;
+		}
+	}
+}

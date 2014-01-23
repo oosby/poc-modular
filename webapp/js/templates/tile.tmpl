@@ -1,0 +1,25 @@
+<ul>
+{{#list}}
+    <li>
+         <div class="tile flip {{#weather}}{{main}}{{/weather}}" data-module="tile">
+            <div class="card">
+                <div class="face front">
+                    <hgroup>
+                        <h3>{{#date}}{{../dt}}{{/date}}</h3>
+                        <h4>{{#weather}}{{description}}{{/weather}}</h4>
+                    </hgroup>
+                </div>
+                <ul class="face back temps">
+                    <li>Humidity: {{humidity}}&#37;</li>
+                    <li>Winds: {{speed}}mph</li>
+                    {{#temp}}
+                    <li>High: {{max}}&deg;</li>
+                    <li>Low: {{min}}&deg;</li>
+                    {{/temp}}
+                </ul>
+            </div>
+        </div>
+    </li>
+    
+{{/list}}
+</ul>

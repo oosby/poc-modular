@@ -4,10 +4,17 @@
 	    paths: {
 	    	'utilities': 'globals/utils',
 	    	'jquery': '//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min',
-	    	'modernizr': 'vendor/modernizr.min'
+	    	'modernizr': 'vendor/modernizr.min',
+	    	'text': 'vendor/text'
 	    },
 	    shim: {
-
+	    	'vendor/handlebars-v1.3.0': {
+	    		exports: 'Handlebars'
+	    	}, 
+	    	'vendor/handlebars.helpers' : {
+	    		deps: ['vendor/handlebars-v1.3.0'],
+	    		exports: 'Helpers'
+	    	}
 	    }
 	});
 

@@ -1,35 +1,57 @@
 @import "compass/css3";
 @import "compass/reset";
+@import "fonts";
+@import "nav";
+@import "accordion";
+@import "carousel";
+@import "copy";
+@import "tile";
+
+
 $default-border-radius: 5px;
 $default-transition-property: transform;
 $default-transition-duration : 500ms;
 $default-transition-timing: ease-in;
 
-@import "nav";
-@import "accordion";
-@import "carousel";
-@import "copy";
-
 * {
   box-sizing: border-box;
 }
 body {
-  font-family: 'Georgia', serif;
-  background: #999;
+  font-family: helvetica, sans-serif;
   padding: 2em;
 
+  header {
+    margin-bottom: .5em;
+    padding-bottom: .5em;
+    border-bottom: 1px dashed #555;
+  }
+
+  section {
+    padding-bottom: .5em;
+    border-bottom: 1px dashed #555;
+  }
+
   h1 {
-  	font-size: 3em;
-    color: #555;
+  	font-size: 5em;
+    color: #333;
     text-align: center;
+    font-family: 'ostrich-regular' sans-serif;
   }
 
   h2 {
-  	font-size: 1.8em;
-  	color: #555;
+  	font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    font-family: 'ostrich-regular' sans-serif;
   }
   h3 {
   	font-size: 1.4em;
+    color: #333;
+  }
+
+  h4 {
+    font-size: .8em;
+    color: #333;
   }
 }
 
@@ -37,3 +59,5 @@ body {
   @include transition();
   @include transition(height, 500ms);
 }
+
+@import "mediaQ";

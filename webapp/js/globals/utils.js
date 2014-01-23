@@ -25,7 +25,7 @@ define([], function () {
 	    },
 
 	    createModule : function createModule(moduleName, options) {
-	        var tmp = Object.create(this.siteModules[moduleName].object)
+	        var tmp = Object.create(_modularNS.utils.siteModules[moduleName].object)
 	            , cb = this.siteModules[moduleName].startFn
 	            , options = options || {};
 
