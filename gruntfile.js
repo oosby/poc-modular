@@ -33,7 +33,8 @@ module.exports = function(grunt) {
 				        },
 				        {
 				            //module names are relative to baseUrl
-				            name: 'video',
+				            name: 'weather',
+				            exclude: ['main']
 				        }
 				    ]
 				}

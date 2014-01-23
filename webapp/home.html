@@ -15,14 +15,19 @@
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" href="styles/main.css">
     </head>
-    <body>
+    <body data-module="getWeather">
         <header>
             <h1></h1>
-            <h2>10-day forcast</h2>    
+            <h2>10-day forcast</h2> 
+            <select class="city-list" name="select">
+                <option value="tokyo">Tokyo</option> 
+                <option value="chicago" selected>Chicago</option>
+                <option value="bogota">Bogota</option>
+            </select>   
         </header>
         <section></section>
     <!-- build:js scripts/amd-app.js -->
-    <script data-main="js/main" src="js/vendor/require.js"></script>
+    <script data-main="js/main" src="js/vendor/require.js" data-start="weather"></script>
     <!-- endbuild -->
 </body>
 </html>

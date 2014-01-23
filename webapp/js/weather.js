@@ -1,0 +1,2 @@
+define(['modules/tile'], function () {
+});

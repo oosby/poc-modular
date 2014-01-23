@@ -2,7 +2,6 @@
 @import "compass/reset";
 @import "fonts";
 @import "nav";
-@import "accordion";
 @import "carousel";
 @import "copy";
 @import "tile";
@@ -19,11 +18,13 @@ $default-transition-timing: ease-in;
 body {
   font-family: helvetica, sans-serif;
   padding: 2em;
+  font-family: 'ostrich-regular' sans-serif
 
   header {
     margin-bottom: .5em;
     padding-bottom: .5em;
     border-bottom: 1px dashed #555;
+    text-align: center;
   }
 
   section {
@@ -53,11 +54,6 @@ body {
     font-size: .8em;
     color: #333;
   }
-}
-
-.animate {
-  @include transition();
-  @include transition(height, 500ms);
 }
 
 @import "mediaQ";

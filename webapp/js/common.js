@@ -1,2 +1,2 @@
-define(['modules/tile', 'modules/accordion', 'modules/orderedList'], function () {
+define(['globals/mainnav', 'globals/subnav'], function () {
 });

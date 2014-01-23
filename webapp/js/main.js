@@ -18,7 +18,7 @@
 	    }
 	});
 
-	require(['modernizr', 'vendor/domReady!', 'globals/mainnav', 'globals/subnav', 'common'], function (m, doc) {
+	require(['modernizr', 'vendor/domReady!','common'], function (m, doc) {
             // the startmodule is defined on the same script tag of data-main.
             // example: <script data-main="main.js" data-start="pagemodule/main" src="vendor/require.js"/>
             var tag = document.querySelector('[data-start]')

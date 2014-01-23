@@ -35,6 +35,19 @@ define([], function () {
 	        return tmp;
 	    },
 
+	    lazyModuleInit : function lazyModuleInit(context) {
+	    	var els = context.querySelectorAll('[data-module]');
+
+	        [].forEach.call(els, function(el) {
+	        	var mod = el.getAttribute('data-module');
+	        	if (_modularNS.utils.siteModules[mod]) {
+	        		this.createModule(mod, {'el': el});
+	        	} else {
+	        		require('modules/' + mod);
+	        	}
+	        }, this);
+	    },
+
 		elFinder : function elFinder (args) {
 			var el = args.el,
 				elNode = args.elNode.toLowerCase(),
