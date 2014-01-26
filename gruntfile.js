@@ -26,7 +26,6 @@ module.exports = function(grunt) {
 					baseUrl: 'js',
 					mainConfigFile: 'webapp/js/main.js',
 					dir: 'webapp-built',
-					optimize: 'none',
 					modules: [
 				        {
 				            name: 'main',
@@ -43,6 +42,7 @@ module.exports = function(grunt) {
 	});
 
 	// load plugins and tasks
+	grunt.registerTask('build', ['sass:dist', 'requirejs']);
 	grunt.loadNpmTasks('grunt-contrib-requirejs');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');

@@ -18,7 +18,7 @@ define(['utilities'
 
     function getTheWeather() {
         $.get(url + city + params, function(data) {
-            console.dir(data)
+            // console.dir(data)
             var forecasts = tileTemplate(data)
                 , header = headerTemplate(data.city);
 

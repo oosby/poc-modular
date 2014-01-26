@@ -1,2 +1,2 @@
-@include font-face("ostrich-regular", font-files("/webapp/styles/fonts/ostrich-regular-webfont.ttf", "/webapp/styles/fonts/ostrich-regular-webfont.otf", "/webapp/styles/fonts/ostrich-regular-webfont.woff"));
-@include font-face("ostrich-black", font-files("/webapp/styles/fonts/ostrich-black-webfont.ttf", "/webapp/styles/fonts/ostrich-black-webfont.otf", "/webapp/styles/fonts/ostrich-black-webfont.woff"));
+@include font-face("ostrich-regular", font-files("fonts/ostrich-regular-webfont.ttf", "fonts/ostrich-regular-webfont.otf", "fonts/ostrich-regular-webfont.woff"));
+@include font-face("ostrich-black", font-files("fonts/ostrich-black-webfont.ttf", "fonts/ostrich-black-webfont.otf", "fonts/ostrich-black-webfont.woff"));

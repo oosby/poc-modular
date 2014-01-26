@@ -27,12 +27,17 @@ section {
 		-webkit-perspective: 800;
 
 		hgroup {
+			-webkit-transition: background .5s ease;
 			padding: .5em;
 			font-family: 'ostrich-regular' sans-serif;
 			position: relative;
 			z-index: 1;
 			cursor: pointer;
 			background: rgba(255, 255, 255, 0.6);
+
+			&:hover {
+				background: rgba(255, 255, 255, 0.3);
+			}
 
 			h4 {
 				font-size: 2.5em;
