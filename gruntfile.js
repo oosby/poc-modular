@@ -2,8 +2,15 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		sass: {
-			dist: {
+			dev: {
 				files: {'./webapp/styles/main.css': './webapp/styles/main.scss'},
+				options: {
+					sourcemap: true,
+					compass: true
+				}
+			},
+			dist: {
+				files: {'./webapp-built/styles/main.css': './webapp-built/styles/main.scss'},
 				options: {
 					sourcemap: true,
 					compass: true
@@ -13,7 +20,7 @@ module.exports = function(grunt) {
 		watch: {
 			css: {
 				files: 'webapp/styles/*.scss',
-				tasks: ['sass'],
+				tasks: ['sass:dev'],
 				options: {
 					livereload: true
 				}
